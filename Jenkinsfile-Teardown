@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Stop app'){
         steps {
-                sh "docker stop app"
+                sh "docker stop webapp"
             } 
         }
         stage('Stop proxy'){
@@ -18,7 +18,7 @@ pipeline {
         }        
         stage('Delete app'){
             steps {
-              sh "docker rm app"
+              sh "docker rm webapp"
             }
         }
         stage('Delete proxy'){
