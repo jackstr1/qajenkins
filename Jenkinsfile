@@ -8,7 +8,7 @@ pipeline {
         }
         stage('ls'){
             steps {
-              sh "ls -la"
+              sh "ls -a"
             }
         }
         stage('pwd'){
