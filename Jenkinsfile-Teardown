@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    stages {
+        stage('Stop app'){
+        steps {
+                sh "docker stop app"
+            } 
+        }
+        stage('Stop proxy'){
+            steps {
+              sh "docker stop proxy"
+            }
+        }
+        stage('Delete net'){
+            steps {
+              sh "docker network rm webapp"
+            }
+        }        
+        stage('Delete app'){
+            steps {
+              sh "docker rm app"
+            }
+        }
+        stage('Delete proxy'){
+            steps {
+              sh "docker rm proxy"
+            }
+        }
+    }
+}
