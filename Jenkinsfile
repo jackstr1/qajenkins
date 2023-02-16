@@ -11,14 +11,19 @@ pipeline {
               sh "docker build -t jackqa/task3-proxy ./proxy"
             }
         }
+        stage('Create net'){
+            steps {
+              sh "docker network create webapp"
+            }
+        }        
         stage('Start app'){
             steps {
-              sh "docker run -dit jackqa/task3-app webapp"
+              sh "docker run --name webapp --net webapp -dit jackqa/task3-app"
             }
         }
         stage('Start proxy'){
             steps {
-              sh "docker run -dit jackqa/task3-proxy proxy"
+              sh "docker run --name proxy --net webapp -dit jackqa/task3-proxy"
             }
         }
     }
