@@ -1,32 +1,24 @@
 pipeline {
     agent any
     stages {
-        stage('Echo'){
+        stage('Build app'){
         steps {
-                sh "echo 'step 1'"
+                sh "docker build -t jackqa/task3-app ./app"
             } 
         }
-        stage('ls'){
+        stage('Build proxy'){
             steps {
-              sh "ls -a"
+              sh "docker build -t jackqa/task3-proxy ./proxy"
             }
         }
-        stage('pwd'){
+        stage('Start app'){
             steps {
-              sh "pwd"
+              sh "docker run -dit jackqa/task3-app webapp"
             }
         }
-        stage('touch file'){
+        stage('Start proxy'){
             steps {
-              sh "touch file"
-            }
-        }
-        stage('move it'){
-            steps {
-              sh '''
-                mkdir movedIt
-                mv file movedIt
-              '''
+              sh "docker run -dit jackqa/task3-proxy proxy"
             }
         }
     }
