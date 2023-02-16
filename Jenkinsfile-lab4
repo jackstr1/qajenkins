@@ -1,1 +1,15 @@
-
+pipeline {
+    agent any
+    stages {
+        stage('Build app'){
+        steps {
+                sh "docker build -t jackqa/task4-app ./nodejs"
+            } 
+        }    
+        stage('Start app'){
+            steps {
+              sh "docker run --name nodejs -p 80:5000 -dit jackqa/task3-app"
+            }
+        }
+    }
+}
