@@ -8,7 +8,7 @@ pipeline {
         }    
         stage('Start app'){
             steps {
-              sh "docker run --name nodejs -p 80:5000 -dit jackqa/task3-app"
+              sh "docker run --name nodejs -p 80:5000 -dit jackqa/task4-app"
             }
         }
     }
