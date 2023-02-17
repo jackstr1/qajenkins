@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build app'){
+        steps {
+                sh '''
+		cd lab6
+		./deploy.sh
+		'''
+            } 
+        }
+        stage('Images'){
+            steps {
+              sh "docker images"
+            }
+        }
+    }
+}
+
