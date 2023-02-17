@@ -25,7 +25,12 @@ pipeline {
             steps {
               sh "docker run --name proxy -p 80:80 --net webapp -dit jackqa/task3-proxy"
             }
-        }      
+        }
+        stage('Start proxy'){
+            steps {
+              sh "echo test"
+            }
+        }
     }
 }
 
