@@ -5,6 +5,7 @@ pipeline {
         steps {
                 sh '''
 		cd lab6
+		chmod +x deploy.sh
 		./deploy.sh
 		'''
             } 
