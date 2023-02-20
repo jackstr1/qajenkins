@@ -12,6 +12,7 @@ docker network create trio-task-network
 # build flask and mysql
 docker build -t jackqa/trio-task-db db
 docker build -t jackqa/trio-task-flask-app flask-app
+docker build -t jackqa/trio-task-nginx nginx
  
 # run mysql container
 docker run -d \
